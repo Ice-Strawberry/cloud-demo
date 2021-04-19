@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.wyy</groupId>
+    <artifactId>cloud-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>cloud-demo</name>
+    <description>Demo project for Spring Boot</description>
+    <!-- 标记此maven工程为pom文件工程：负责做统一pom文件内容管理 -->
+    <packaging>pom</packaging>
+    <!-- 模块 -->
+    <modules>
+        <module>member-service</module>
+<!--        <module>order-service</module>-->
+<!--        <module>eureka-service</module>-->
+    </modules>
+    <!-- 做版本号统一配置 -->
+    <properties>
+<!--        Spring相关的-->
+        <java.version>1.8</java.version>
+        <spring-boot.version>2.4.5</spring-boot.version>
+        <!-- 其他 -->
+        <lombok.version>1.18.16</lombok.version>
+        <fastjson.version>1.2.75</fastjson.version>
+    </properties>
+    <!-- 此处填写每个工程都会存在的依赖，机制与继承相同 -->
+    <dependencies>
+        <!-- 其他 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring相关 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>test</scope>
+            </dependency>
+           <!-- <scope>可以使用5个值：
+            * compile，缺省值，适用于所有阶段，会随着项目一起发布。
+            * provided，类似compile，期望JDK、容器或使用者会提供这个依赖。如servlet.jar。
+            * runtime，只在运行时使用，如JDBC驱动，适用运行和测试阶段。
+            * test，只在测试时使用，用于编译和运行测试代码。不会随项目发布。
+            * system，类似provided，需要显式提供包含依赖的jar，Maven不会在Repository中查找它。
+-->
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
