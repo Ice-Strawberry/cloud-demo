@@ -18,8 +18,9 @@
     <!-- 模块 -->
     <modules>
         <module>member-service</module>
-<!--        <module>order-service</module>-->
-<!--        <module>eureka-service</module>-->
+        <module>order-service</module>
+        <module>eureka-server</module>
+<!--        <module>eureka-client</module>-->
     </modules>
     <!-- 做版本号统一配置 -->
     <properties>
@@ -29,6 +30,7 @@
         <!-- 其他 -->
         <lombok.version>1.18.16</lombok.version>
         <fastjson.version>1.2.75</fastjson.version>
+        <spring-cloud-starter-netflix.version>2.2.6.RELEASE</spring-cloud-starter-netflix.version>
     </properties>
     <!-- 此处填写每个工程都会存在的依赖，机制与继承相同 -->
     <dependencies>
@@ -58,6 +60,11 @@
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+                <version>${spring-cloud-starter-netflix.version}</version>
             </dependency>
            <!-- <scope>可以使用5个值：
             * compile，缺省值，适用于所有阶段，会随着项目一起发布。
